@@ -432,5 +432,5 @@ with results_tab:
 
 st.divider()
 st.caption(
-    "Tshering Wangchuk's Project | Synthetic data | Educational demonstration only"
+    "Tshering Wangchuk's Project | Synthetic Data | Educational Demonstration Only"
 )
