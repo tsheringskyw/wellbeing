@@ -410,7 +410,7 @@ with results_tab:
         metrics["matrix"],
         annot=True,
         fmt="d",
-        cmap="Blues",
+        cmap="Reds",
         xticklabels=metrics["classes"],
         yticklabels=metrics["classes"],
         ax=axis,
