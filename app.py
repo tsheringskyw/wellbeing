@@ -36,7 +36,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 st.set_page_config(
-    page_title="Bhutan Student Wellbeing",
+    page_title="STUDENT WELLBEING - BHUTAN",
     page_icon="🌿",
     layout="wide",
 )
@@ -50,16 +50,26 @@ def generate_synthetic_data(n_rows=800, seed=42):
     """Create fictional records for teaching; no real people are represented."""
     rng = np.random.default_rng(seed)
     districts = [
-        "Thimphu",
-        "Paro",
-        "Punakha",
-        "Wangdue Phodrang",
-        "Sarpang",
-        "Trashigang",
-        "Mongar",
-        "Samtse",
-        "Chukha",
-        "Bumthang",
+          "Bumthang",
+          "Chukha",
+          "Dagana",
+          "Gasa",
+          "Haa",
+          "Lhuentse",
+          "Mongar",
+          "Paro",
+          "Pema Gatshel",
+          "Punakha",
+          "Samdrup Jongkhar",
+          "Samtse",
+          "Sarpang",
+          "Thimphu",
+          "Trashigang",
+          "Trashiyangtse",
+          "Trongsa",
+          "Tsirang",
+          "Wangdue Phodrang",
+          "Zhemgang",
     ]
 
     gender = rng.choice(
@@ -218,7 +228,7 @@ def train_model(data):
 data = generate_synthetic_data()
 model, metrics = train_model(data)
 
-st.title("Student Wellbeing in Bhutan")
+st.title("STUDENT WELLBEING - BHUTAN")
 st.caption(
     "A beginner machine-learning project using 800 fictional records"
 )
@@ -407,5 +417,5 @@ with results_tab:
 
 st.divider()
 st.caption(
-    "Student project | Synthetic data | Educational demonstration only"
+    "Tshering Wangchuk's Project | Synthetic data | Educational demonstration only"
 )
