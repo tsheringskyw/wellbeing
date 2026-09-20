@@ -1,6 +1,6 @@
 # 🌿 Student Wellbeing - Bhutan
 
-A beginner-friendly machine learning project built with **Python** and **Streamlit** to demonstrate how a classification model can explore patterns associated with student wellbeing.
+Machine learning project built with **Python** and **Streamlit** to demonstrate how a classification model can explore patterns associated with student wellbeing.
 
 > **Important:** This project uses **synthetic data only**. It is an educational demonstration and is **not** a medical, psychological, screening, or diagnostic tool.
 
@@ -10,7 +10,7 @@ The application generates fictional student records representing students across
 
 The project uses **Logistic Regression** to demonstrate a basic machine-learning workflow:
 
-1. Generate synthetic data
+1. It generates synthetic data
 2. Split the data into training and testing sets
 3. Preprocess numerical and categorical variables
 4. Train a Logistic Regression model
@@ -141,27 +141,6 @@ A real-world system would require informed consent, ethics approval, secure data
 - Scikit-learn
 - Matplotlib
 - Seaborn
-
-## 🚀 Installation
-
-Clone the repository:
-
-```bash
-git clone <your-github-repository-url>
-cd <your-project-folder>
-```
-
-Install the required packages:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the Streamlit application:
-
-```bash
-streamlit run app.py
-```
 
 ## 📦 requirements.txt
 
