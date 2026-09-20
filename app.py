@@ -45,32 +45,35 @@ TARGET = "support_need"
 POSITIVE = "Support recommended"
 
 
+DZONGKHAGS = [
+    "Bumthang",
+    "Chukha",
+    "Dagana",
+    "Gasa",
+    "Haa",
+    "Lhuentse",
+    "Mongar",
+    "Paro",
+    "Pema Gatshel",
+    "Punakha",
+    "Samdrup Jongkhar",
+    "Samtse",
+    "Sarpang",
+    "Thimphu",
+    "Trashigang",
+    "Trashiyangtse",
+    "Trongsa",
+    "Tsirang",
+    "Wangdue Phodrang",
+    "Zhemgang",
+    ]
+
+
 @st.cache_data
 def generate_synthetic_data(n_rows=800, seed=42):
     """Create fictional records for teaching; no real people are represented."""
     rng = np.random.default_rng(seed)
-    districts = [
-          "Bumthang",
-          "Chukha",
-          "Dagana",
-          "Gasa",
-          "Haa",
-          "Lhuentse",
-          "Mongar",
-          "Paro",
-          "Pema Gatshel",
-          "Punakha",
-          "Samdrup Jongkhar",
-          "Samtse",
-          "Sarpang",
-          "Thimphu",
-          "Trashigang",
-          "Trashiyangtse",
-          "Trongsa",
-          "Tsirang",
-          "Wangdue Phodrang",
-          "Zhemgang",
-    ]
+
 
     gender = rng.choice(
         ["Woman", "Man", "Non-binary/Prefer not to say"],
@@ -79,7 +82,7 @@ def generate_synthetic_data(n_rows=800, seed=42):
     )
     age = rng.integers(18, 27, n_rows)
     # Ensure all 20 Dzongkhags are represented at least once
-    district = np.resize(districts, n_rows)
+    district = np.resize(DZONGKHAGS, n_rows)
     rng.shuffle(district)
     residence = rng.choice(["Urban", "Rural"], n_rows, p=[0.58, 0.42])
     sleep_hours = np.clip(rng.normal(6.8, 1.25, n_rows), 3.5, 10).round(1)
@@ -319,7 +322,7 @@ with prediction_tab:
             ["Woman", "Man", "Non-binary/Prefer not to say"],
         )
         district = st.selectbox(
-            "Dzongkhag", districts
+            "Dzongkhag", DZONGKHAGS
         )
         residence = st.selectbox("Residence", ["Urban", "Rural"])
         sleep = st.slider(
