@@ -78,7 +78,9 @@ def generate_synthetic_data(n_rows=800, seed=42):
         p=[0.49, 0.48, 0.03],
     )
     age = rng.integers(18, 27, n_rows)
-    district = rng.choice(districts, n_rows)
+    # Ensure all 20 Dzongkhags are represented at least once
+    district = np.resize(districts, n_rows)
+    rng.shuffle(district)
     residence = rng.choice(["Urban", "Rural"], n_rows, p=[0.58, 0.42])
     sleep_hours = np.clip(rng.normal(6.8, 1.25, n_rows), 3.5, 10).round(1)
     study_hours = np.clip(rng.normal(5.7, 2.0, n_rows), 1, 12).round(1)
@@ -317,7 +319,7 @@ with prediction_tab:
             ["Woman", "Man", "Non-binary/Prefer not to say"],
         )
         district = st.selectbox(
-            "District", sorted(data["district"].unique())
+            "Dzongkhag", districts
         )
         residence = st.selectbox("Residence", ["Urban", "Rural"])
         sleep = st.slider(
