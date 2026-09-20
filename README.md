@@ -132,16 +132,6 @@ The results:
 
 A real-world system would require informed consent, ethics approval, secure data handling, local validation, fairness testing, and appropriate professional oversight.
 
-## 🛠️ Technologies Used
-
-- Python
-- Streamlit
-- Pandas
-- NumPy
-- Scikit-learn
-- Matplotlib
-- Seaborn
-
 ## 📦 requirements.txt
 
 ```text
