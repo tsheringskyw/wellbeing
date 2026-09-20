@@ -235,7 +235,8 @@ model, metrics = train_model(data)
 
 st.title("STUDENT WELLBEING - BHUTAN")
 st.caption(
-    "A beginner machine-learning project using 800 fictional records"
+    "A beginner machine-learning project using 800 fictional records "
+    "representing students across Bhutan"
 )
 st.warning(
     "This app is not a medical or diagnostic tool. The result must not be "
@@ -251,24 +252,17 @@ overview_tab, data_tab, prediction_tab, results_tab = st.tabs(
 with overview_tab:
     st.subheader("Project objective")
     st.write(
-        "This app shows how logistic regression can identify patterns "
-        "associated with a fictional support-recommendation label. The data "
-        "were generated inside this Python file and are not survey responses "
-        "from Bhutanese students."
+        "This educational application demonstrates how machine learning "
+        "can be used to explore factors associated with student wellbeing. "
+        "It uses synthetic data representing fictional students from all "
+        "20 Dzongkhags of Bhutan. The data are generated inside this Python "
+        "file and do not represent real student responses."
     )
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
     col1.metric("Fictional records", f"{len(data):,}")
     col2.metric("Input features", len(data.columns) - 1)
     col3.metric("Algorithm", "Logistic regression")
-    support_rate = (data[TARGET] == POSITIVE).mean()
-    col4.metric("Support-need rate", f"{support_rate:.1%}")
-
-    st.markdown("### About Bhutan")
-    st.write(
-        "Bhutan is divided into 20 Dzongkhags. This educational dataset "
-        "includes fictional student records from all 20 Dzongkhags."
-    )
 
     st.markdown("### Machine-learning workflow")
     st.write(
@@ -281,21 +275,12 @@ with overview_tab:
         "qualified mental-health oversight."
     )
 
-    st.markdown("### How the model works")
+    st.markdown("### Bhutan Context")
     st.write(
-        "The app uses Logistic Regression to learn relationships between "
-        "student lifestyle, academic, social, and financial variables and "
-        "the synthetic support-need label. The model is trained on part of "
-        "the dataset and evaluated on a separate hold-out test set."
-    )
-
-    st.markdown("### Project limitations")
-    st.write(
-        "This project uses synthetic data generated for educational purposes. "
-        "The patterns do not represent real Bhutanese students and the model "
-        "must not be used for medical, academic, employment, or disciplinary "
-        "decisions. Model outputs show statistical predictions, not diagnoses "
-        "or causal relationships."
+        "Bhutan is divided into 20 Dzongkhags. In this educational project, "
+        "the Dzongkhag field is included to demonstrate how categorical "
+        "location information can be incorporated into a machine-learning "
+        "dataset."
     )
 
 with data_tab:
@@ -326,19 +311,6 @@ with data_tab:
         + " by Synthetic Outcome"
     )
     st.pyplot(figure)
-
-    st.markdown("### Synthetic students by Dzongkhag")
-    dzongkhag_counts = (
-        data["district"]
-        .value_counts()
-        .reindex(DZONGKHAGS, fill_value=0)
-    )
-    st.bar_chart(dzongkhag_counts)
-
-    st.caption(
-        "The chart shows the distribution of fictional records across all "
-        "20 Dzongkhags."
-    )
 
     st.markdown("### First 20 fictional records")
     st.dataframe(data.head(20), use_container_width=True)
@@ -429,23 +401,9 @@ with prediction_tab:
 
 with results_tab:
     st.subheader("Hold-out test results")
-
-    positive_report = metrics["report"].get(POSITIVE, {})
-    precision = positive_report.get("precision", 0.0)
-    recall = positive_report.get("recall", 0.0)
-    f1 = positive_report.get("f1-score", 0.0)
-
-    metric1, metric2, metric3, metric4, metric5 = st.columns(5)
+    metric1, metric2 = st.columns(2)
     metric1.metric("Accuracy", f"{metrics['accuracy']:.1%}")
-    metric2.metric("Precision", f"{precision:.1%}")
-    metric3.metric("Recall", f"{recall:.1%}")
-    metric4.metric("F1 Score", f"{f1:.1%}")
-    metric5.metric("ROC-AUC", f"{metrics['roc_auc']:.3f}")
-
-    st.caption(
-        "Precision, recall, and F1 score are calculated for the "
-        "'Support recommended' class."
-    )
+    metric2.metric("ROC-AUC", f"{metrics['roc_auc']:.3f}")
 
     figure, axis = plt.subplots(figsize=(7, 5))
     sns.heatmap(
@@ -474,6 +432,5 @@ with results_tab:
 
 st.divider()
 st.caption(
-    "Tshering Wangchuk's Project | Synthetic data | Educational demonstration only | "
-    "20 Dzongkhags included"
+    "Tshering Wangchuk's Project | Synthetic data | Educational demonstration only"
 )
